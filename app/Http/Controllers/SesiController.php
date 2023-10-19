@@ -43,4 +43,9 @@ class SesiController extends Controller
         Auth::logout();
         return redirect('');
     }
-}
+
+    public function profile()
+    {
+        return view('profile');
+    }
+};
