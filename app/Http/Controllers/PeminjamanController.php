@@ -12,8 +12,8 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        $peminjamans = Peminjaman::orderBy('created_at', 'DESC')->get();
-        return view('peminjamans.index', compact('peminjamans'));
+        $peminjamen = Peminjaman::orderBy('created_at', 'DESC')->get();
+        return view('peminjamans.index', compact('peminjamen'));
     }
 
     /**
@@ -38,8 +38,8 @@ class PeminjamanController extends Controller
      */
     public function show(string $id)
     {
-        $peminjamans = Peminjaman::findOrFail($id);
-        return view('peminjamans.show', compact('peminjaman'));
+        $peminjamen = Peminjaman::findOrFail($id);
+        return view('peminjamans.show', compact('peminjamen'));
     }
 
     /**
@@ -47,7 +47,7 @@ class PeminjamanController extends Controller
      */
     public function edit(string $id)
     {
-        $peminjamans = Peminjaman::findOrFail($id);
+        $peminjaman = Peminjaman::findOrFail($id);
         return view('peminjamans.edit', compact('peminjaman'));
     }
 
@@ -56,8 +56,8 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $peminjamans = Peminjaman::findOrFail($id);
-        $peminjamans->update($request->all());
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->update($request->all());
         return redirect()->route('peminjamans')->with('success', 'Peminjaman Aset Berhasil Diperbaharui');
     }
 
@@ -66,8 +66,8 @@ class PeminjamanController extends Controller
      */
     public function destroy(string $id)
     {
-        $peminjamans = Peminjaman::findOrFail($id);
-        $peminjamans->delete();
+        $peminjaman = Peminjaman::findOrFail($id);
+        $peminjaman->delete();
         return redirect()->route('peminjamans')->with('success', 'Peminjaman Aset Berhasil Dihapus');
     }
 }

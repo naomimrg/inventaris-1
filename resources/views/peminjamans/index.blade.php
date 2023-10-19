@@ -24,8 +24,8 @@
             </tr>
         </thead>
         <tbody>
-            @if($peminjamans->count() > 0)
-                @foreach($peminjamans as $rs)
+            @if($peminjamen->count() > 0)
+                @foreach($peminjamen as $rs)
                     <tr>
                         <td class="align-middle">{{ $loop->iteration }}</td>
                         <td class="align-middle">{{ $rs->nama }}</td>

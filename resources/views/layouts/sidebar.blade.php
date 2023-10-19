@@ -53,6 +53,12 @@
       <i class="fas fa-fw fa-tachometer-alt"></i>
       <span>Perbaikan Aset</span></a>
   </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('riwayats') }}">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Riwayat Aset</span></a>
+  </li>
   
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">

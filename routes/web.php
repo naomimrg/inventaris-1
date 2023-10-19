@@ -7,6 +7,7 @@ use App\Http\Controllers\KerusakanController;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PerbaikanController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 
@@ -94,6 +95,16 @@ Route::controller(PerbaikanController::class)->prefix('perbaikans')->group(funct
     Route::get('edit/{id}', 'edit')->name('perbaikans.edit');
     Route::put('edit/{id}', 'update')->name('perbaikans.update');
     Route::delete('destroy/{id}', 'destroy')->name('perbaikans.destroy');
+});
+
+Route::controller(RiwayatController::class)->prefix('riwayat')->group(function () {
+    Route::get('', 'index')->name('riwayats');
+    Route::get('create', 'create')->name('riwayats.create');
+    Route::post('store', 'store')->name('riwayats.store');
+    Route::get('show/{id}', 'show')->name('riwayats.show');
+    Route::get('edit/{id}', 'edit')->name('riwayats.edit');
+    Route::put('edit/{id}', 'update')->name('riwayats.update');
+    Route::delete('destroy/{id}', 'destroy')->name('riwayats.destroy');
 });
 
 Route::get('/profile', [SesiController::class, 'profile'])->name('profile');
