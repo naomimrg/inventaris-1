@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AsetController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KerusakanController;
 use App\Http\Controllers\LokasiController;
@@ -35,6 +36,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/admin', [AdminController::class,'admin'])->middleware('userAkses:admin');
     Route::get('/admin/staf_aset', [AdminController::class,'staf_aset'])->middleware('userAkses:staf_aset');
     Route::get('/logout', [SesiController::class,'logout'])->name('logout');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [SesiController::class, 'profile'])->name('profile');
 });
 
 Route::controller(AsetController::class)->prefix('asets')->group(function () {
@@ -106,6 +109,3 @@ Route::controller(RiwayatController::class)->prefix('riwayat')->group(function (
     Route::put('edit/{id}', 'update')->name('riwayats.update');
     Route::delete('destroy/{id}', 'destroy')->name('riwayats.destroy');
 });
-
-Route::get('/profile', [SesiController::class, 'profile'])->name('profile');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
