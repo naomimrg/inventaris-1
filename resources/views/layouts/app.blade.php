@@ -44,13 +44,9 @@
 
           @yield('contents')
 
-          <!-- Content Row -->
-
         </div>
-        <!-- /.container-fluid -->
 
       </div>
-      <!-- End of Main Content -->
 
       <!-- Footer -->
       @include('layouts.footer')

@@ -15,51 +15,76 @@
   <li class="nav-item">
     <a class="nav-link" href="{{ route('dashboard') }}">
       <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
+      <span>Dashboard</span>
+    </a>
   </li>
   
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('asets') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Aset</span></a>
-  </li>
-  
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('kategoris') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Kategori Aset</span></a>
-  </li>
+  @if(auth()->user()->role === 'admin')
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('asets') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Aset</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('kategoris') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Kategori Aset</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('lokasis') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Lokasi Aset</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('kerusakans') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Laporan Kerusakan Aset</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('peminjamans') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Peminjaman Aset</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('perbaikans') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Perbaikan Aset</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('riwayats') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Riwayat Aset</span>
+      </a>
+    </li>
+  @endif
 
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('lokasis') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Lokasi Aset</span></a>
-  </li>
+  @if(auth()->user()->role === 'staf_aset')
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('asets') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Aset</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('kerusakans') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Laporan Kerusakan Aset</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('peminjamans') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Peminjaman Aset</span>
+      </a>
+    </li>
+  @endif
 
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('kerusakans') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Laporan Kerusakan Aset</span></a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('peminjamans') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Peminjaman Aset</span></a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('perbaikans') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Perbaikan Aset</span></a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="{{ route('riwayats') }}">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Riwayat Aset</span></a>
-  </li>
-  
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
   

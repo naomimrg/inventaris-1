@@ -3,7 +3,7 @@
 @section('contents')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1></h1>
-        <!-- <a href="{{ route('peminjamans.create') }}" class="btn btn-primary"></a> -->
+        {{-- <!-- <a href="{{ route('peminjamans.create') }}" class="btn btn-primary"></a> --> --}}
     </div>
     <hr />
     @if(Session::has('success'))
@@ -48,7 +48,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td class="text-center" colspan="4">Peminjaman Aset Tidak Ditemukan</td>
+                    <td class="text-center" colspan="7">Peminjaman Aset Tidak Ditemukan</td>
                 </tr>
             @endif
         </tbody>

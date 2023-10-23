@@ -44,7 +44,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td class="text-center" colspan="4">Laporan Kerusakan Aset Tidak Ditemukan</td>
+                    <td class="text-center" colspan="7">Laporan Kerusakan Aset Tidak Ditemukan</td>
                 </tr>
             @endif
         </tbody>

@@ -50,7 +50,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td class="text-center" colspan="4">Data Perbaikan Aset Tidak Ditemukan</td>
+                    <td class="text-center" colspan="7">Data Perbaikan Aset Tidak Ditemukan</td>
                 </tr>
             @endif
         </tbody>
