@@ -37,17 +37,34 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
+    Route::controller(AsetController::class)->prefix('asets')->group(function () {
+        Route::get('', 'index')->name('asets');
+        Route::get('create', 'create')->name('asets.create');
+        Route::post('store', 'store')->name('asets.store');
+        Route::get('show/{id}', 'show')->name('asets.show');
+        Route::get('edit/{id}', 'edit')->name('asets.edit');
+        Route::put('edit/{id}', 'update')->name('asets.update');
+        Route::delete('destroy/{id}', 'destroy')->name('asets.destroy');
+    });
+
+    Route::controller(PeminjamanController::class)->prefix('peminjamans')->group(function () {
+        Route::get('', 'index')->name('peminjamans');
+        Route::get('create', 'create')->name('peminjamans.create');
+        Route::post('store', 'store')->name('peminjamans.store');
+        Route::get('show/{id}', 'show')->name('peminjamans.show');
+        Route::delete('destroy/{id}', 'destroy')->name('peminjamans.destroy');
+    });
+
+    Route::controller(KerusakanController::class)->prefix('kerusakans')->group(function () {
+        Route::get('', 'index')->name('kerusakans');
+        Route::get('create', 'create')->name('kerusakans.create');
+        Route::post('store', 'store')->name('kerusakans.store');
+        Route::get('show/{id}', 'show')->name('kerusakans.show');
+        Route::delete('destroy/{id}', 'destroy')->name('kerusakans.destroy');
+    });
+
     Route::middleware(['userAkses:admin'])->group(function () {
         Route::get('/auth/admin', [AuthController::class, 'admin']);
-        Route::controller(AsetController::class)->prefix('asets')->group(function () {
-            Route::get('', 'index')->name('asets');
-            Route::get('create', 'create')->name('asets.create');
-            Route::post('store', 'store')->name('asets.store');
-            Route::get('show/{id}', 'show')->name('asets.show');
-            Route::get('edit/{id}', 'edit')->name('asets.edit');
-            Route::put('edit/{id}', 'update')->name('asets.update');
-            Route::delete('destroy/{id}', 'destroy')->name('asets.destroy');
-        });
 
         Route::controller(KategoriController::class)->prefix('kategoris')->group(function () {
             Route::get('', 'index')->name('kategoris');
@@ -67,26 +84,6 @@ Route::middleware(['auth'])->group(function () {
             Route::get('edit/{id}', 'edit')->name('lokasis.edit');
             Route::put('edit/{id}', 'update')->name('lokasis.update');
             Route::delete('destroy/{id}', 'destroy')->name('lokasis.destroy');
-        });
-
-        Route::controller(KerusakanController::class)->prefix('kerusakans')->group(function () {
-            Route::get('', 'index')->name('kerusakans');
-            Route::get('create', 'create')->name('kerusakans.create');
-            Route::post('store', 'store')->name('kerusakans.store');
-            Route::get('show/{id}', 'show')->name('kerusakans.show');
-            Route::get('edit/{id}', 'edit')->name('kerusakans.edit');
-            Route::put('edit/{id}', 'update')->name('kerusakans.update');
-            Route::delete('destroy/{id}', 'destroy')->name('kerusakans.destroy');
-        });
-
-        Route::controller(PeminjamanController::class)->prefix('peminjamans')->group(function () {
-            Route::get('', 'index')->name('peminjamans');
-            Route::get('create', 'create')->name('peminjamans.create');
-            Route::post('store', 'store')->name('peminjamans.store');
-            Route::get('show/{id}', 'show')->name('peminjamans.show');
-            Route::get('edit/{id}', 'edit')->name('peminjamans.edit');
-            Route::put('edit/{id}', 'update')->name('peminjamans.update');
-            Route::delete('destroy/{id}', 'destroy')->name('peminjamans.destroy');
         });
 
         Route::controller(PerbaikanController::class)->prefix('perbaikans')->group(function () {
@@ -112,32 +109,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['userAkses:staf_aset'])->group(function () {
         Route::get('/auth/staf_aset', [AuthController::class, 'staf_aset']);
-        Route::controller(AsetController::class)->prefix('asets')->group(function () {
-            Route::get('', 'index')->name('asets');
-            Route::get('create', 'create')->name('asets.create');
-            Route::post('store', 'store')->name('asets.store');
-            Route::get('show/{id}', 'show')->name('asets.show');
-            Route::get('edit/{id}', 'edit')->name('asets.edit');
-            Route::put('edit/{id}', 'update')->name('asets.update');
-            Route::delete('destroy/{id}', 'destroy')->name('asets.destroy');
-        });
-    
-        Route::controller(PeminjamanController::class)->prefix('peminjamans')->group(function () {
-            Route::get('', 'index')->name('peminjamans');
-            Route::get('create', 'create')->name('peminjamans.create');
-            Route::post('store', 'store')->name('peminjamans.store');
-            Route::get('show/{id}', 'show')->name('peminjamans.show');
-            Route::delete('destroy/{id}', 'destroy')->name('peminjamans.destroy');
-        });
-
-        Route::controller(KerusakanController::class)->prefix('kerusakans')->group(function () {
-            Route::get('', 'index')->name('kerusakans');
-            Route::get('create', 'create')->name('kerusakans.create');
-            Route::post('store', 'store')->name('kerusakans.store');
-            Route::get('show/{id}', 'show')->name('kerusakans.show');
-            Route::delete('destroy/{id}', 'destroy')->name('kerusakans.destroy');
-        });
+    });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/profile', [SesiController::class, 'profile'])->name('profile');
-});
+
