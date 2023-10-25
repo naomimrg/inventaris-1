@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     function index(){
-        return view('admin');
+        return view('dashboard');
     }
 
     function admin(){
-        return view('admin');
+        return view('dashboard');
     }
 
     function staf_aset(){
-        return view('admin');
+        return view('dashboard');
     }
 }

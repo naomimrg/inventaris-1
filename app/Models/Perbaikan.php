@@ -26,6 +26,6 @@ class Perbaikan extends Model
 
     public function asset()
     {
-        return $this->belongsTo(Asset::class, 'asset_id');
+        return $this->belongsTo(Aset::class, 'asset_id');
     }
 }

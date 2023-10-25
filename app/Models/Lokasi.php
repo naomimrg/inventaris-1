@@ -16,6 +16,6 @@ class Lokasi extends Model
 
     public function assets()
     {
-        return $this->hasMany(Asset::class);
+        return $this->hasMany(Aset::class);
     }
 }

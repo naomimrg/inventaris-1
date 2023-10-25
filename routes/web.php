@@ -29,7 +29,7 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::get('/home', function () {
-    return redirect('/admin');
+    return redirect('/dashboard');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -57,7 +57,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(KerusakanController::class)->prefix('kerusakans')->group(function () {
         Route::get('', 'index')->name('kerusakans');
-        Route::get('create', 'create')->name('kerusakans.create');
         Route::post('store', 'store')->name('kerusakans.store');
         Route::get('show/{id}', 'show')->name('kerusakans.show');
         Route::delete('destroy/{id}', 'destroy')->name('kerusakans.destroy');
@@ -109,8 +108,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['userAkses:staf_aset'])->group(function () {
         Route::get('/auth/staf_aset', [AuthController::class, 'staf_aset']);
+        // Route::controller('/create', [KerusakanController::class, 'create'])->name('kerusakans.create');
     });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/profile', [SesiController::class, 'profile'])->name('profile');
-

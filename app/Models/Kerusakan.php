@@ -11,7 +11,7 @@ class Kerusakan extends Model
 
     protected $fillable = [
         'user_id',
-        'assets_id',
+        'asets_id',
         'tanggal_laporan',
         'lokasi_kerusakan',
         'deskripsi_kerusakan',
@@ -20,6 +20,6 @@ class Kerusakan extends Model
 
     public function asset()
     {
-        return $this->belongsTo(Asset::class);
+        return $this->belongsTo(Aset::class);
     }
 }

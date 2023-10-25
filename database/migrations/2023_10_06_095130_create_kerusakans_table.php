@@ -13,10 +13,11 @@ return new class extends Migration
 {
     Schema::create('kerusakans', function (Blueprint $table) {
         $table->id();
+        $table->foreignId('user_id')->nullable()->constrained('users' );
         $table->foreignId('asets_id')->constrained('asets');
+        $table->date('tanggal_laporan');
         $table->foreignId('lokasis_id')->constrained('lokasis');
         $table->text('deskripsi_kerusakan');
-        $table->foreignId('user_id')->nullable()->constrained('users');
         $table->timestamps();
     });
 }
