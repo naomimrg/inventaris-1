@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <label for="tanggal_permintaan_perbaikan"><b>Tanggal Permintaan Perbaikan </b></label>
-                        <input type="text" name="" class="form-control" id="tanggal_permintaan_perbaikan"
+                        <input type="date" name="" class="form-control" id="tanggal_permintaan_perbaikan"
                             placeholder="" disabled>
                     </div>
                     <div class="col-lg-12">
@@ -47,3 +47,4 @@
             </div>
         </div>
     </div>
+</div>

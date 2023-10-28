@@ -38,7 +38,7 @@
                 <table class="table table-bordered table-hover" id="datatable">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col">No</th>
                             <th scope="col">Nama Aset</th>
                             <th scope="col">Kode Aset</th>
                             <th scope="col">Tanggal Permintaan Perbaikan</th>

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Halaman Data Perbaikan Aset', 'page_heading' => 'Daftar Perbaikan Aset'])
+@extends('layouts.app', ['title' => 'Halaman Data Riwayat Aset', 'page_heading' => 'Daftar Riwayat Aset'])
 
 @section('content')
     <div class="card">
@@ -26,7 +26,7 @@
 
         <div class="row">
           <button type="button" class="btn btn-primary float-left mt-3 mx-3" data-toggle="modal"
-              data-target="#perbaikans_create">
+              data-target="#riwayats_create">
               <i class="fas fa-fw fa-plus"></i>
               Tambah Data
           </button>

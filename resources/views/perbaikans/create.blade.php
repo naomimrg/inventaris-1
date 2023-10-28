@@ -39,10 +39,18 @@
                                 <input type="text" name="deskripsi" class="form-control" id="deskripsi_create">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="status">Status Perbaikan</label>
                                 <input type="string" name="status" class="form-control" id="status_create">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="users_id">Nama Pengguna</label>
+                                <input type="string" name="users_id" class="form-control" id="users_id_create">
                             </div>
                         </div>
                     </div>
@@ -55,5 +63,4 @@
             </form>
         </div>
     </div>
-</div>
 </div>
