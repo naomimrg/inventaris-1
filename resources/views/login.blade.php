@@ -50,24 +50,18 @@
                                 <div class="invalid-feedback">
                                     Mohon masukkan password!
                                 </div>
-
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-
                             <div class="form-group text-right">
                                 <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right"
                                     tabindex="4">
                                     Login
                                 </button>
                             </div>
-
-                            {{-- <div class="mt-5 text-center">
-                                Belum punya akun? <a href="{{ route('register') }}">Buat Akun</a>
-                            </div> --}}
                         </form>
                     </div>
                 </div>

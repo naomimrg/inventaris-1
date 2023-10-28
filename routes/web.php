@@ -34,7 +34,7 @@ Route::get('/home', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/auth', [AuthController::class, 'index']);
-    Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
+    Route::post('/logout', [SesiController::class, 'logout'])->name('logout');
 });
 
     Route::controller(AsetController::class)->prefix('asets')->group(function () {

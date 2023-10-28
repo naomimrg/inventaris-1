@@ -1,50 +1,101 @@
-@extends('layouts.app')
-@section('title', 'Kategori Aset')
-@section('contents')
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1></h1>
-        <a href="{{ route('kategoris.create') }}" class="btn btn-primary">Add Kategori</a>
+@extends('layouts.app', ['title' => 'Halaman Kategori Aset', 'page_heading' => 'Kategori Aset'])
+
+@section('content')
+    <div class="card">
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>x</span>
+                    </button>
+                    {{ $errors->first() }}
+                </div>
+            </div>
+        @endif
+
+        @if (session()->has('sukses'))
+            <div class="alert alert-success alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>x</span>
+                    </button>
+                    {{ session()->get('sukses') }}
+                </div>
+            </div>
+        @endif
+
+        <div class="row">
+          <button type="button" class="btn btn-primary float-left mt-3 mx-3" data-toggle="modal"
+              data-target="#kategori_create">
+              <i class="fas fa-fw fa-plus"></i>
+              Tambah Data
+          </button>
+      </div> 
     </div>
-    <hr />
-    @if(Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
+    <div class="row px-3 py-3">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama Kategori Aset</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    {{-- <tbody>
+                        @foreach ($kategoris as $ks)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $rs->item_code }}</td>
+                                <td>{{ Str::limit($rs->name, 55, '...') }}</td>
+                                <td>{{ $rs->year_of_purchase }}</td>
+                                @if ($rs->condition === 1)
+                                    <td>
+                                        <span class="badge badge-pill badge-success" data-toggle="tooltip"
+                                            data-placement="top" title="Baik">Baik</span>
+                                    </td>
+                                @elseif($rs->condition === 2)
+                                    <td>
+                                        <span class="badge badge-pill badge-warning" data-toggle="tooltip"
+                                            data-placement="top" title="Kurang Baik">Kurang Baik</span>
+                                    </td>
+                                @else
+                                    <td>
+                                        <span class="badge badge-pill badge-danger" data-toggle="tooltip"
+                                            data-placement="top" title="Rusak Berat">Rusak Berat</span>
+                                    </td>
+                                @endif
+                                <td class="text-center">
+                                    <a data-id="{{ $rs->id }}" class="btn btn-sm btn-info text-white show_modal"
+                                        data-toggle="modal" data-target="#show_rs" title="Lihat Detail">
+                                        <i class="fas fa-fw fa-search"></i>
+                                    </a>
+                                    <a data-id="{{ $rs->id }}"
+                                        class="btn btn-sm btn-success text-white swal-edit-button" data-toggle="modal"
+                                        data-target="#edit_rs" data-placement="top" title="Ubah data">
+                                        <i class="fas fa-fw fa-edit"></i>
+                                    </a>
+                                    <a data-id="{{ $rs->id }}"
+                                        class="btn btn-sm btn-danger text-white swal-delete-button" data-toggle="tooltip"
+                                        data-placement="top" title="Hapus data">
+                                        <i class="fas fa-fw fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody> --}}
+                </table>
+            </div>
         </div>
-    @endif
-    <table class="table table-hover">
-        <thead class="table-primary">
-            <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Deskripsi</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if($kategoris->count() > 0)
-                @foreach($kategoris as $rs)
-                    <tr>
-                        <td class="align-middle">{{ $loop->iteration }}</td>
-                        <td class="align-middle">{{ $rs->nama }}</td>
-                        <td class="align-middle">{{ $rs->deskripsi }}</td>
-                        <td class="align-middle">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="{{ route('kategoris.show', $rs->id) }}" type="button" class="btn btn-secondary">Detail</a>
-                                <a href="{{ route('kategoris.edit', $rs->id)}}" type="button" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('kategoris.destroy', $rs->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger m-0">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td class="text-center" colspan="7">Kategori Aset Tidak Ditemukan</td>
-                </tr>
-            @endif
-        </tbody>
-    </table>
+    </div>
+    </div>
 @endsection
+
+@push('modal')
+    @include('kategoris.show')
+    @include('kategoris.create')
+    @include('kategoris.edit')
+@endpush
+
