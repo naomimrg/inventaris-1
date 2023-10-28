@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(KerusakanController::class)->prefix('kerusakans')->group(function () {
         Route::get('', 'index')->name('kerusakans');
+        Route::get('create', 'create')->name('kerusakans.create');
         Route::post('store', 'store')->name('kerusakans.store');
         Route::get('show/{id}', 'show')->name('kerusakans.show');
         Route::delete('destroy/{id}', 'destroy')->name('kerusakans.destroy');
@@ -85,6 +86,8 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('destroy/{id}', 'destroy')->name('lokasis.destroy');
         });
 
+        // Route::get('/kerusakans', [KerusakanController::class, 'index'])->name('kerusakans.index');
+
         Route::controller(PerbaikanController::class)->prefix('perbaikans')->group(function () {
             Route::get('', 'index')->name('perbaikans');
             Route::get('create', 'create')->name('perbaikans.create');
@@ -108,7 +111,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['userAkses:staf_aset'])->group(function () {
         Route::get('/auth/staf_aset', [AuthController::class, 'staf_aset']);
-        // Route::controller('/create', [KerusakanController::class, 'create'])->name('kerusakans.create');
     });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

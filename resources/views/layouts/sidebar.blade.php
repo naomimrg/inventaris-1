@@ -72,7 +72,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('kerusakans') }}">
+      <a class="nav-link" href="{{ route('kerusakans.create') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Laporan Kerusakan Aset</span>
       </a>

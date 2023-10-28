@@ -1,75 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Login</title>
-  <!-- Custom fonts for this template-->
-  <link href="{{ asset('admin_assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  
-  <!-- Custom styles for this template-->
-  <link href="{{ asset('admin_assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Login &mdash; {{ config('app.name') }}</title>
+
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{{ url('assets/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/fontawesome/css/all.css') }}">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{{ url('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/components.css') }}">
 </head>
-<body class="bg-gradient-primary">
-  <div class="container">
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
-      <div class="col-xl-10 col-lg-12 col-md-9">
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-              <div class="col-lg-6">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
-                  </div>
-                  <form action="{{ route('login') }}" method="POST" class="user">
-                    @csrf
-                    @if ($errors->any())
-                      <div class="alert alert-danger">
-                          <ul>
-                            @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                            @endforeach
-                          </ul>
-                      </div>
-                    @endif
-                    <div class="form-group">
-                      <input name="username" type="username" class="form-control form-control-user" id="exampleInputUsername" placeholder="Username">
+
+<body>
+    <div id="app">
+        <section class="section">
+            <div class="d-flex flex-wrap align-items-stretch">
+                <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
+                    <div class="p-4 m-3">
+                        <img src="../assets/img/logouniv.png" alt="logo" width="80"
+                            class="shadow-light squared mb-5 mt-2">
+                        <h5 class="text-dark font-weight-normal">Sistem Informasi Manajemen Aset <span
+                                class="font-weight-bold">PSDKU Universitas Lampung Way Kanan</span></h5>
+                        <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                            @csrf
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input id="username" type="username"
+                                    class="form-control @error('username') is-invalid @enderror" name="username"
+                                    tabindex="1" required autofocus>
+
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="d-block">
+                                    <label for="password" class="control-label">Password</label>
+                                </div>
+                                <input id="password" type="password" class="form-control @error('password') @enderror"
+                                    name="password" tabindex="2" required>
+                                <div class="invalid-feedback">
+                                    Mohon masukkan password!
+                                </div>
+
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group text-right">
+                                <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right"
+                                    tabindex="4">
+                                    Login
+                                </button>
+                            </div>
+
+                            {{-- <div class="mt-5 text-center">
+                                Belum punya akun? <a href="{{ route('register') }}">Buat Akun</a>
+                            </div> --}}
+                        </form>
                     </div>
-                    <div class="form-group">
-                      <input name="password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
-                        <input name="remember" type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember
-                          Me</label>
-                      </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block btn-user">Login</button>
-                  </form>
-                  <hr>
                 </div>
-              </div>
+                <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom"
+                    data-background="https://www.lampost.co/upload/psdku-unila-way-kanan-buka-penerimaan-mahasiswa-baru-jurusan-d3-akuntansi.jpg">
+                    <div class="absolute-bottom-left index-2">
+                        <div class="text-light p-5 pb-2">
+                            <div class="mb-5 pb-3">
+                                <h1 class="mb-2 display-4 font-weight-bold" id="greetings"></h1>
+                                <h5 class="font-weight-normal text-muted-transparent">Selamat Datang</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
+        </section>
     </div>
-  </div>
-  <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('admin_assets/vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('admin_assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="{{ asset('admin_assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-  <!-- Custom scripts for all pages-->
-  <script src="{{ asset('admin_assets/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- General JS Scripts -->
+    <script src="{{ url('assets/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ url('assets/js/popper.min.js') }}"></script>
+    <script src="{{ url('assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ url('assets/js/moment.min.js') }}"></script>
+    <script src="{{ url('assets/js/stisla.js') }}"></script>
+
+    <!-- Template JS File -->
+    <script src="{{ url('assets/js/scripts.js') }}"></script>
+    <script src="{{ url('assets/js/custom.js') }}"></script>
+
+    <!-- Page Specific JS File -->
+    @include('layouts.partials.greetings')
+
+    <script>
+        $(document).ready(function() {
+            $("#greetings").html(greetings());
+        });
+    </script>
 </body>
+
 </html>
