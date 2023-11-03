@@ -5,10 +5,45 @@
         <h1></h1>
         <a href="{{ route('kategoris.create') }}" class="btn btn-primary">Tambah Kategori</a>
     </div>
-    <hr />
-    @if(Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
+    <div class="row px-3 py-3">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama Kategori Aset</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($kategoris as $ks)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $ks->nama }}</td>
+                                <td>{{ $ks->deskripsi }}</td>
+                                <td class="text-center">
+                                    <a data-id="{{ $ks->id }}" class="btn btn-sm btn-info text-white show_modal"
+                                        data-toggle="modal" data-target="#show_ks" title="Lihat Detail">
+                                        <i class="fas fa-fw fa-search"></i>
+                                    </a>
+                                    <a data-id="{{ $ks->id }}"
+                                        class="btn btn-sm btn-success text-white swal-edit-button" data-toggle="modal"
+                                        data-target="#edit_ks" data-placement="top" title="Ubah data">
+                                        <i class="fas fa-fw fa-edit"></i>
+                                    </a>
+                                    <a data-id="{{ $ks->id }}"
+                                        class="btn btn-sm btn-danger text-white swal-delete-button" data-toggle="tooltip"
+                                        data-placement="top" title="Hapus data">
+                                        <i class="fas fa-fw fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     @endif
     <table class="table table-hover">
@@ -48,3 +83,9 @@
         </tbody>
     </table>
 @endsection
+
+@push('modal')
+    @include('kategoris.show')
+    @include('kategoris.create')
+    @include('kategoris.edit')
+@endpush

@@ -7,7 +7,7 @@
     </div>
     <div class="sidebar-brand-text mx-3">SIMASET PSDKU</div>
   </a>
-  
+
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
   

@@ -1,66 +1,99 @@
-@extends('layouts.app')
-@section('title', 'Riwayat Aset')
-@section('contents')
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1></h1>
-        <a href="{{ route('riwayats.create') }}" class="btn btn-primary">Add Riwayat</a>
+@extends('layouts.app', ['title' => 'Halaman Data Riwayat Aset', 'page_heading' => 'Daftar Riwayat Aset'])
+
+@section('content')
+    <div class="card">
+        @if ($errors->any())
+            <div class="alert alert-danger alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>x</span>
+                    </button>
+                    {{ $errors->fipst() }}
+                </div>
+            </div>
+        @endif
+
+        @if (session()->has('sukses'))
+            <div class="alert alert-success alert-dismissible show fade">
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                        <span>x</span>
+                    </button>
+                    {{ session()->get('sukses') }}
+                </div>
+            </div>
+        @endif
+
+        <div class="row">
+          <button type="button" class="btn btn-primary float-left mt-3 mx-3" data-toggle="modal"
+              data-target="#riwayats_create">
+              <i class="fas fa-fw fa-plus"></i>
+              Tambah Data
+          </button>
+      </div> 
     </div>
-    <hr />
-    @if(Session::has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('success') }}
+    <div class="row px-3 py-3">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="datatable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama Aset</th>
+                            <th scope="col">Kode Aset</th>
+                            <th scope="col">Kategori</th>
+                            <th scope="col">Lokasi</th>
+                            <th scope="col">Tanggal</th>
+                            <th scope="col">Jenis Perubahan</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Pengguna</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Catatan Tambahan</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($riwayat as $rs)
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $rs->nama }}</td>
+                                <td>{{ $rs->kode_aset }}</td>
+                                <td>{{ $rs->kategori_id }}</td>
+                                <td>{{ $rs->lokasi_id }}</td>
+                                <td>{{ $rs->tanggal }}</td>
+                                <td>{{ $rs->jenis_perubahan }}</td>
+                                <td>{{ $rs->dekskripsi }}</td>
+                                <td>{{ $rs->users_id }}</td>
+                                <td>{{ $rs->status }}</td>
+                                <td>{{ $rs->catatan_tambahan }}</td>
+                                <td class="text-center">
+                                    <a data-id="{{ $rs->id }}" class="btn btn-sm btn-info text-white show_modal"
+                                        data-toggle="modal" data-target="#show_rs" title="Lihat Detail">
+                                        <i class="fas fa-fw fa-search"></i>
+                                    </a>
+                                    <a data-id="{{ $rs->id }}"
+                                        class="btn btn-sm btn-success text-white swal-edit-button" data-toggle="modal"
+                                        data-target="#edit_rs" data-placement="top" title="Ubah data">
+                                        <i class="fas fa-fw fa-edit"></i>
+                                    </a>
+                                    <a data-id="{{ $rs->id }}"
+                                        class="btn btn-sm btn-danger text-white swal-delete-button" data-toggle="tooltip"
+                                        data-placement="top" title="Hapus data">
+                                        <i class="fas fa-fw fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-    @endif
-    <table class="table table-hover">
-        <thead class="table-primary">
-            <tr>
-                <th>No</th>
-                <th>Nama Aset</th>
-                <th>Kode Aset</th>
-                <th>Kategori</th>
-                <th>Lokasi</th>
-                <th>Tanggal</th>
-                <th>Jenis Perubahan</th>
-                <th>Deskripsi</th>
-                <th>Pengguna</th>
-                <th>Status</th>
-                <th>Catatan Tambahan</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if($riwayat->count() > 0)
-                @foreach($riwayat as $rs)
-                    <tr>
-                        <td class="align-middle">{{ $loop->iteration }}</td>
-                        <td class="align-middle">{{ $rs->nama }}</td>
-                        <td class="align-middle">{{ $rs->kode_aset }}</td>
-                        <td class="align-middle">{{ $rs->kategori_id }}</td>
-                        <td class="align-middle">{{ $rs->lokasi_id }}</td>
-                        <td class="align-middle">{{ $rs->tanggal }}</td>
-                        <td class="align-middle">{{ $rs->jenis_perubahan }}</td>
-                        <td class="align-middle">{{ $rs->deskripsi }}</td>
-                        <td class="align-middle">{{ $rs->user_id }}</td>
-                        <td class="align-middle">{{ $rs->status }}</td>
-                        <td class="align-middle">{{ $rs->catatan_tambahan }}</td>
-                        <td class="align-middle">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <a href="{{ route('riwayats.show', $rs->id) }}" type="button" class="btn btn-secondary">Detail</a>
-                                <a href="{{ route('riwayats.edit', $rs->id)}}" type="button" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('riwayats.destroy', $rs->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger m-0">Delete</button>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            @else
-                <tr>
-                    <td class="text-center" colspan="7">Riwayat Aset Tidak Ditemukan</td>
-                </tr>
-            @endif
-        </tbody>
-    </table>
+    </div>
+    </div>
 @endsection
+
+@push('modal')
+    @include('riwayats.show')
+    @include('riwayats.create')
+    @include('riwayats.edit')
+@endpush

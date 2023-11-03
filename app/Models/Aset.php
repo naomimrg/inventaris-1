@@ -19,11 +19,12 @@ class Aset extends Model
         'deskripsi',  
         'user_id', 
         'kategori_id', 
-        'lokasi_id'];
+        'lokasi_id',
+    ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function kategori()
