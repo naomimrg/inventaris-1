@@ -29,8 +29,8 @@
             <input type="number" name="harga" class="form-control" id="harga" placeholder="Harga">
         </div>
         <div class="mb-3">
-            <label for="description" class="form-label">Deskripsi</label>
-            <textarea class="form-control" name="description" id="description" placeholder="Deskripsi"></textarea>
+            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <textarea class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi"></textarea>
         </div>
         <div class="d-grid">
             <button type="submit" class="btn btn-primary">Submit</button>

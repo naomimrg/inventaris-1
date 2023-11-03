@@ -17,7 +17,7 @@
         </div>
         <div class="col mb-3">
             <label class="form-label">Nama Pelapor</label>
-            <input type="text" name="nama" class="form-control" placeholder="Nama Pelapor" value="{{ $kerusakans->deskripsi_kerusakan }}" readonly>
+            <input type="text" name="users_id" class="form-control" placeholder="Nama Pelapor" value="{{ $kerusakans->deskripsi_kerusakan }}" readonly>
         </div>
         <div class="col mb-3">
             <label class="form-label">Created At</label>

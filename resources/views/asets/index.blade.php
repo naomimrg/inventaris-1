@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'List Aset')
+@section('title', 'Daftar Aset')
 @section('contents')
     <div class="d-flex align-items-center justify-content-between mb-3">
         <h1></h1>
-        <a href="{{ route('asets.create') }}" class="btn btn-primary">Add Aset</a>
+        <a href="{{ route('asets.create') }}" class="btn btn-primary">Tambah Aset</a>
     </div>
     <hr />
     @if(Session::has('success'))

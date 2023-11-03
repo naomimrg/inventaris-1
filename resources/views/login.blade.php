@@ -23,8 +23,7 @@
                     <div class="p-4 m-3">
                         <img src="../assets/img/logouniv.png" alt="logo" width="80"
                             class="shadow-light squared mb-5 mt-2">
-                        <h5 class="text-dark font-weight-normal">Sistem Informasi Manajemen Aset <span
-                                class="font-weight-bold">PSDKU Universitas Lampung Way Kanan</span></h5>
+                        <h5 class="text-dark font-weight-normal font-weight-bold">Silahkan Login</h5>
                         <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                             @csrf
                             <div class="form-group">
@@ -32,13 +31,11 @@
                                 <input id="username" type="username"
                                     class="form-control @error('username') is-invalid @enderror" name="username"
                                     tabindex="1" required autofocus>
-
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-
                             </div>
 
                             <div class="form-group">
@@ -51,7 +48,7 @@
                                     Mohon masukkan password!
                                 </div>
 
-                                @error('username')
+                                @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -64,10 +61,6 @@
                                     Login
                                 </button>
                             </div>
-
-                            {{-- <div class="mt-5 text-center">
-                                Belum punya akun? <a href="{{ route('register') }}">Buat Akun</a>
-                            </div> --}}
                         </form>
                     </div>
                 </div>
@@ -78,6 +71,7 @@
                             <div class="mb-5 pb-3">
                                 <h1 class="mb-2 display-4 font-weight-bold" id="greetings"></h1>
                                 <h5 class="font-weight-normal text-muted-transparent">Selamat Datang</h5>
+                                <h5 class="font-weight-normal text-muted-transparent">Sistem Informasi Manajemen Aset PSDKU Universitas Lampung Way Kanan</h5>
                             </div>
                         </div>
                     </div>
