@@ -12,6 +12,7 @@ class Aset extends Model
     protected $fillable = [
         'nama', 
         'kode_aset', 
+        'tanggal_pembelian',
         'kategori', 
         'lokasi', 
         'harga', 
@@ -20,22 +21,22 @@ class Aset extends Model
         'kategori_id', 
         'lokasi_id'];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class)->withDefault([
-            'nama' => 'Tanpa Kategori'
+        return $this->belongsTo(Kategori::class, 'kategori_id')->withDefault([
+            'nama' => 'Tanpa Kategori',
         ]);
     }
 
     public function lokasi()
     {
-        return $this->belongsTo(Lokasi::class)->withDefault([
-            'nama_lokasi' => 'Tanpa Lokasi'
+        return $this->belongsTo(Lokasi::class, 'lokasi_id')->withDefault([
+            'nama_lokasi' => 'Tanpa Lokasi',
         ]);
     }
 }

@@ -2,10 +2,10 @@
   
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-laugh-wink"></i>
+    <div class="sidebar-brand-icon">
+      <img src="https://upload.wikimedia.org/wikipedia/id/f/ff/Logo_UnivLampung.png" alt="Logo UNILA" style="width: 50px; height: 50px;">
     </div>
-    <div class="sidebar-brand-text mx-3">SIMASET PSDKU UNILA</div>
+    <div class="sidebar-brand-text mx-3">SIMASET PSDKU</div>
   </a>
   
   <!-- Divider -->
@@ -22,43 +22,43 @@
   @if(auth()->user()->role === 'admin')
     <li class="nav-item">
       <a class="nav-link" href="{{ route('asets') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-columns"></i>
         <span>Aset</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ route('kategoris') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-th"></i>
         <span>Kategori Aset</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ route('lokasis') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-map-marker"></i>
         <span>Lokasi Aset</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ route('kerusakans') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-fire"></i>
         <span>Laporan Kerusakan Aset</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ route('peminjamans') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-arrow-up"></i>
         <span>Peminjaman Aset</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ route('perbaikans') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-wrench"></i>
         <span>Perbaikan Aset</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ route('riwayats') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-history"></i>
         <span>Riwayat Aset</span>
       </a>
     </li>
@@ -67,19 +67,19 @@
   @if(auth()->user()->role === 'staf_aset')
     <li class="nav-item">
       <a class="nav-link" href="{{ route('asets') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-columns"></i>
         <span>Aset</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{{ route('kerusakans.create') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-fire"></i>
         <span>Laporan Kerusakan Aset</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{ route('peminjamans') }}">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+      <a class="nav-link" href="{{ route('peminjamans.create') }}">
+        <i class="fas fa-arrow-up"></i>
         <span>Peminjaman Aset</span>
       </a>
     </li>

@@ -6,8 +6,8 @@
   <div class="col-md-4">
       <div class="card bg-primary text-white">
           <div class="card-body">
-              <h5 class="card-title">Jumlah Aset</h5>
-              <p class="card-text">{{ $jumlahAset }}</p>
+              <h5 class="card-title">Total Aset</h5>
+              <p class="card-text">{{ $totalAset }}</p>
           </div>
       </div>
   </div>

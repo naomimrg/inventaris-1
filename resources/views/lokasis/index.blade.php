@@ -3,7 +3,7 @@
 @section('contents')
 <div class="d-flex align-items-center justify-content-between mb-3">
     <h1></h1>
-    <a href="{{ route('lokasis.create') }}" class="btn btn-primary">Add Lokasi</a>
+    <a href="{{ route('lokasis.create') }}" class="btn btn-primary">Tambah Lokasi</a>
 </div>
 <hr />
 @if(Session::has('success'))

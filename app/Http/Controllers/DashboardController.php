@@ -11,10 +11,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $jumlahAset = Aset::count();
+        $totalAset = Aset::count();
         $totalKerusakan = Kerusakan::count();
         $totalPeminjaman = Peminjaman::count();
 
-        return view('dashboard', compact('jumlahAset', 'totalKerusakan', 'totalPeminjaman'));
+        return view('dashboard', compact('totalAset', 'totalKerusakan', 'totalPeminjaman'));
     }
 }

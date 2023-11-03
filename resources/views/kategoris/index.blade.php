@@ -3,7 +3,7 @@
 @section('contents')
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1></h1>
-        <a href="{{ route('kategoris.create') }}" class="btn btn-primary">Add Kategori</a>
+        <a href="{{ route('kategoris.create') }}" class="btn btn-primary">Tambah Kategori</a>
     </div>
     <hr />
     @if(Session::has('success'))
@@ -42,7 +42,7 @@
                 @endforeach
             @else
                 <tr>
-                    <td class="text-center" colspan="7">Kategori Aset Tidak Ditemukan</td>
+                    <td class="text-center" colspan="70">Kategori Aset Tidak Ditemukan</td>
                 </tr>
             @endif
         </tbody>
