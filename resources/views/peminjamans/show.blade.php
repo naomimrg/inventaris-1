@@ -20,4 +20,4 @@
             <input type="text" name="updated_at" class="form-control" placeholder="Updated At" value="{{ $kategori->updated_at }}" readonly>
         </div>
     </div>
-@endsection
+</div>

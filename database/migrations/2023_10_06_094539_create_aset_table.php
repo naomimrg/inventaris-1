@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('kategori_id')->nullable();
             $table->foreignId('lokasi_id')->nullable();
             $table->integer('harga');
+            $table->tinyInteger('kondisi');
             $table->text('deskripsi');
             $table->timestamps();
         });

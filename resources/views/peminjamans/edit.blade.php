@@ -27,10 +27,5 @@
                 <textarea class="form-control" name="keterangan" placeholder="Deskripsi" >{{ $peminjamen->keterangan }}</textarea>
             </div>
         </div>
-        <div class="row">
-            <div class="d-grid">
-                <button class="btn btn-warning">Update</button>
-            </div>
-        </div>
-    </form>
-@endsection
+    </div>
+</div>
